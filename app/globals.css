@@ -15,18 +15,18 @@ body {
 
 @layer components {
   .badge-mint {
-    @apply bg-pastel-mint text-emerald-800 px-2 py-1 rounded-full text-xs font-medium;
+    @apply bg-pastel-mint text-[#2E7D32] px-2 py-1 rounded-full text-xs font-medium;
   }
   .badge-rose {
-    @apply bg-pastel-rose text-rose-800 px-2 py-1 rounded-full text-xs font-medium;
+    @apply bg-pastel-rose text-[#C2185B] px-2 py-1 rounded-full text-xs font-medium;
   }
   .badge-lavender {
-    @apply bg-pastel-lavender text-purple-800 px-2 py-1 rounded-full text-xs font-medium;
+    @apply bg-pastel-lavender text-[#7B1FA2] px-2 py-1 rounded-full text-xs font-medium;
   }
   .badge-sky {
-    @apply bg-pastel-sky text-blue-800 px-2 py-1 rounded-full text-xs font-medium;
+    @apply bg-pastel-sky text-[#1565C0] px-2 py-1 rounded-full text-xs font-medium;
   }
   .badge-peach {
-    @apply bg-pastel-peach text-orange-800 px-2 py-1 rounded-full text-xs font-medium;
+    @apply bg-pastel-peach text-[#E65100] px-2 py-1 rounded-full text-xs font-medium;
   }
 }

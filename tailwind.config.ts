@@ -10,13 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         cream: "#FAF8F5",
+        wheatish: "#F5F0EA",
         editorial: "#FAF8F5", // Alias for cream as per project rules
         pastel: {
-          mint: "#E2F0CB",
-          rose: "#FFDFD3",
-          lavender: "#E0BBE4",
-          sky: "#B5EAD7",
-          peach: "#FFDAC1",
+          mint: "#E8F5E9",
+          rose: "#FCE4EC",
+          lavender: "#F3E5F5",
+          sky: "#E3F2FD",
+          peach: "#FFF3E0",
         },
       },
       fontFamily: {
