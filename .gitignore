@@ -33,6 +33,19 @@ Thumbs.db
 *.gsd
 .agent/
 .agents/
+adapters/
+adaptors/
+docs/
+scripts/
+scratch/
+Scratch/
+GSD-STYLE.md
+gsd-style.md
+model_capabilities.yaml
+model_capabilitiesyaml
+PROJECT_RULES.md
+projectrules.md
+projectrulesmd
 
 # Scratch & Temporary Test Artifacts
 test.*
