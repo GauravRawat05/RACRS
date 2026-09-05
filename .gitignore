@@ -4,6 +4,7 @@ node_modules/
 out/
 build/
 dist/
+*.tsbuildinfo
 
 # Environment
 .env
@@ -32,3 +33,7 @@ Thumbs.db
 *.gsd
 .agent/
 .agents/
+
+# Scratch & Temporary Test Artifacts
+test.*
+test-*.*
