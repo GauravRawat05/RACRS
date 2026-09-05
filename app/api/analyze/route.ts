@@ -5,6 +5,7 @@ import { calculateAllDomainMatches, getRoleBenchmark, analyzeSkillGaps } from '@
 import { getResourcesForGaps } from '@/lib/resources/matcher';
 import { generateActionPlan } from '@/lib/roadmap/generator';
 import { TargetRole, ExperienceTier } from '@/types/onboarding';
+import { evaluateAtsScore } from '@/lib/ats/optimizer';
 
 export async function POST(req: NextRequest) {
   try {
@@ -50,6 +51,9 @@ export async function POST(req: NextRequest) {
     const resources = getResourcesForGaps(skillGapAnalysis, targetTier, targetDomain);
     const actionPlan = generateActionPlan(profile, benchmark, skillGapAnalysis, resources);
     
+    // Calculate ATS Evaluation
+    const atsEvaluation = evaluateAtsScore(profile, benchmark, textToAnalyze);
+    
     return NextResponse.json({
       success: true,
       profile,
@@ -58,14 +62,16 @@ export async function POST(req: NextRequest) {
         allDomainMatches,
         skillGapAnalysis,
         resources,
-        actionPlan
+        actionPlan,
+        atsEvaluation
       },
       // Keep unwrapped for backward compatibility or strict ComprehensiveAnalysisResult matching
       primaryMatch,
       allDomainMatches,
       skillGapAnalysis,
       resources,
-      actionPlan
+      actionPlan,
+      atsEvaluation
     });
   } catch (error: any) {
     console.error('Analyze API Error:', error);
