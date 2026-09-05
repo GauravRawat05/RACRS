@@ -23,6 +23,15 @@ export default function DashboardHeader() {
           <span className="capitalize font-medium">{result.primaryMatch.domainLabel} Focus</span>
           <span>•</span>
           <span>ATS Match: {result.atsEvaluation?.overallScore ?? 0}/100</span>
+          {result.profile?.metadata && (
+            <>
+              <span>•</span>
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-mono font-medium bg-pastel-mint text-pastel-mint-text border border-pastel-mint-text/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-pastel-mint-text animate-pulse"></span>
+                {result.profile.metadata.provider === 'groq' ? 'Groq' : result.profile.metadata.provider === 'openrouter' ? 'OpenRouter' : 'Offline Engine'} ({result.profile.metadata.model.split('/').pop()}) • {result.profile.metadata.latencyMs}ms
+              </span>
+            </>
+          )}
         </div>
       </div>
       <div className="flex flex-col items-end gap-3">
