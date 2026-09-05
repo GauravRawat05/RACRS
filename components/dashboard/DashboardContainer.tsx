@@ -4,6 +4,10 @@ import React from 'react';
 import { useOnboarding } from '@/context/OnboardingContext';
 import DashboardHeader from './DashboardHeader';
 import OverviewTab from './OverviewTab';
+import SkillGapSection from './SkillGapSection';
+import LearningHubSection from './LearningHubSection';
+import RoadmapTimeline from './RoadmapTimeline';
+import AtsEnhancerSection from './AtsEnhancerSection';
 
 export default function DashboardContainer() {
   const { state, setActiveTab } = useOnboarding();
@@ -46,17 +50,41 @@ export default function DashboardContainer() {
         {/* Screen Content */}
         <div className="p-8 print:hidden">
           {activeTab === 'overview' && <OverviewTab />}
-          {activeTab !== 'overview' && (
+          {activeTab === 'matches' && (
             <div className="py-12 text-center text-editorial-secondary">
-              <p>Content for {tabs.find(t => t.id === activeTab)?.label} (Placeholder for Wave 3)</p>
+              {/* Career Matches component would go here (Out of scope for Plan 4.3 tasks but keeping placeholder) */}
+              <p>Career Matches Tab</p>
             </div>
           )}
+          {activeTab === 'gaps' && <SkillGapSection />}
+          {activeTab === 'resources' && <LearningHubSection />}
+          {activeTab === 'roadmap' && <RoadmapTimeline />}
+          {activeTab === 'ats' && <AtsEnhancerSection />}
         </div>
 
         {/* Print Content (Hidden on screen) */}
-        <div className="hidden print:block p-8 space-y-12">
+        <div className="hidden print:flex print:flex-col p-8 space-y-12">
           <OverviewTab />
-          {/* We will render all tabs sequentially here in Wave 3 */}
+          
+          <div className="print:mt-12">
+            <h1 className="text-3xl font-serif font-bold text-editorial-text border-b-2 border-editorial-border pb-2 mb-8">Skill Gap Analysis</h1>
+            <SkillGapSection />
+          </div>
+          
+          <div className="print:mt-12 print:break-before-page">
+            <h1 className="text-3xl font-serif font-bold text-editorial-text border-b-2 border-editorial-border pb-2 mb-8">Learning Path</h1>
+            <LearningHubSection />
+          </div>
+          
+          <div className="print:mt-12 print:break-before-page">
+            <h1 className="text-3xl font-serif font-bold text-editorial-text border-b-2 border-editorial-border pb-2 mb-8">Action Plan</h1>
+            <RoadmapTimeline />
+          </div>
+          
+          <div className="print:mt-12 print:break-before-page">
+            <h1 className="text-3xl font-serif font-bold text-editorial-text border-b-2 border-editorial-border pb-2 mb-8">ATS Optimization</h1>
+            <AtsEnhancerSection />
+          </div>
         </div>
 
       </div>
