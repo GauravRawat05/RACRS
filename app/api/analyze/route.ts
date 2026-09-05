@@ -54,18 +54,21 @@ export async function POST(req: NextRequest) {
     // Calculate ATS Evaluation
     const atsEvaluation = evaluateAtsScore(profile, benchmark, textToAnalyze);
     
+    const fullResult = {
+      profile,
+      primaryMatch,
+      allDomainMatches,
+      skillGapAnalysis,
+      resources,
+      actionPlan,
+      atsEvaluation
+    };
+
     return NextResponse.json({
       success: true,
+      result: fullResult,
       profile,
-      analysis: {
-        primaryMatch,
-        allDomainMatches,
-        skillGapAnalysis,
-        resources,
-        actionPlan,
-        atsEvaluation
-      },
-      // Keep unwrapped for backward compatibility or strict ComprehensiveAnalysisResult matching
+      analysis: fullResult,
       primaryMatch,
       allDomainMatches,
       skillGapAnalysis,

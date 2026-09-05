@@ -8,6 +8,7 @@ import SkillGapSection from './SkillGapSection';
 import LearningHubSection from './LearningHubSection';
 import RoadmapTimeline from './RoadmapTimeline';
 import AtsEnhancerSection from './AtsEnhancerSection';
+import CareerMatchMatrix from './CareerMatchMatrix';
 
 export default function DashboardContainer() {
   const { state, setActiveTab } = useOnboarding();
@@ -50,12 +51,7 @@ export default function DashboardContainer() {
         {/* Screen Content */}
         <div className="p-8 print:hidden">
           {activeTab === 'overview' && <OverviewTab />}
-          {activeTab === 'matches' && (
-            <div className="py-12 text-center text-editorial-secondary">
-              {/* Career Matches component would go here (Out of scope for Plan 4.3 tasks but keeping placeholder) */}
-              <p>Career Matches Tab</p>
-            </div>
-          )}
+          {activeTab === 'matches' && <CareerMatchMatrix />}
           {activeTab === 'gaps' && <SkillGapSection />}
           {activeTab === 'resources' && <LearningHubSection />}
           {activeTab === 'roadmap' && <RoadmapTimeline />}
@@ -66,6 +62,11 @@ export default function DashboardContainer() {
         <div className="hidden print:flex print:flex-col p-8 space-y-12">
           <OverviewTab />
           
+          <div className="print:mt-12">
+            <h1 className="text-3xl font-serif font-bold text-editorial-text border-b-2 border-editorial-border pb-2 mb-8">Career Domain Benchmarks</h1>
+            <CareerMatchMatrix />
+          </div>
+
           <div className="print:mt-12">
             <h1 className="text-3xl font-serif font-bold text-editorial-text border-b-2 border-editorial-border pb-2 mb-8">Skill Gap Analysis</h1>
             <SkillGapSection />

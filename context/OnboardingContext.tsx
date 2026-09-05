@@ -165,9 +165,22 @@ export function OnboardingProvider({ children }: { children: React.ReactNode }) 
         throw new Error(data.error || 'Failed to analyze resume');
       }
       
+      const analysisResultData = data.result || (data.primaryMatch ? {
+        profile: data.profile,
+        primaryMatch: data.primaryMatch,
+        allDomainMatches: data.allDomainMatches,
+        skillGapAnalysis: data.skillGapAnalysis,
+        resources: data.resources,
+        actionPlan: data.actionPlan,
+        atsEvaluation: data.atsEvaluation
+      } : (data.analysis ? {
+        profile: data.profile,
+        ...data.analysis
+      } : data));
+      
       setState(prev => ({ 
         ...prev, 
-        analysisResult: data.result,
+        analysisResult: analysisResultData,
         isAnalyzing: false 
       }));
     } catch (e: any) {
