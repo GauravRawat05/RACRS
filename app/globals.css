@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #FAF8F5;
+  --bg-card: #FFFFFF;
+  --text-primary: #1F2937;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+@layer components {
+  .badge-mint {
+    @apply bg-pastel-mint text-emerald-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  .badge-rose {
+    @apply bg-pastel-rose text-rose-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  .badge-lavender {
+    @apply bg-pastel-lavender text-purple-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  .badge-sky {
+    @apply bg-pastel-sky text-blue-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  .badge-peach {
+    @apply bg-pastel-peach text-orange-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+}
