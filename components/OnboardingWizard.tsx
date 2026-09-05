@@ -45,7 +45,7 @@ const SAMPLE_RESUMES: Record<ExperienceTier, string> = {
 };
 
 export default function OnboardingWizard() {
-  const { state, setExperienceTier, setCareerPurpose, setTargetRole, setResume, nextStep, prevStep, isHydrated } = useOnboarding();
+  const { state, setExperienceTier, setCareerPurpose, setTargetRole, setResume, nextStep, prevStep, isHydrated, analyzeResume } = useOnboarding();
   const [uploading, setUploading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -89,14 +89,18 @@ export default function OnboardingWizard() {
   const handleSampleResume = () => {
     const tier = state.experienceTier || 'junior';
     const text = SAMPLE_RESUMES[tier];
-    setResume({
+    const role = state.targetRole || 'fullstack';
+    const purpose = state.careerPurpose || 'readiness_check';
+    const resumeData = {
       filename: `Sample_${tier}_Resume.txt`,
-      fileType: 'sample',
+      fileType: 'sample' as const,
       text,
       charCount: text.length,
       wordCount: text.split(' ').length,
       isSample: true
-    });
+    };
+    setResume(resumeData);
+    analyzeResume(resumeData, tier, role, purpose);
   };
 
   const renderStepIndicators = () => {
@@ -303,6 +307,11 @@ export default function OnboardingWizard() {
           </button>
         ) : (
           <button
+            onClick={() => {
+              if (state.resume && state.experienceTier && state.targetRole && state.careerPurpose) {
+                analyzeResume(state.resume, state.experienceTier, state.targetRole, state.careerPurpose);
+              }
+            }}
             disabled={!state.resume}
             className="px-6 py-2 rounded-md font-medium bg-pastel-mint-text text-white disabled:opacity-50 hover:opacity-90 transition-opacity"
           >
