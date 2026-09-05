@@ -17,16 +17,44 @@ body {
   .badge-mint {
     @apply bg-pastel-mint text-[#2E7D32] px-2 py-1 rounded-full text-xs font-medium;
   }
-  .badge-rose {
+  .badge-rose, .badge-pink {
     @apply bg-pastel-rose text-[#C2185B] px-2 py-1 rounded-full text-xs font-medium;
   }
   .badge-lavender {
     @apply bg-pastel-lavender text-[#7B1FA2] px-2 py-1 rounded-full text-xs font-medium;
   }
-  .badge-sky {
+  .badge-sky, .badge-blue {
     @apply bg-pastel-sky text-[#1565C0] px-2 py-1 rounded-full text-xs font-medium;
   }
   .badge-peach {
     @apply bg-pastel-peach text-[#E65100] px-2 py-1 rounded-full text-xs font-medium;
+  }
+}
+
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  
+  /* Hide all nav, tabs, buttons, modal chrome */
+  nav, button, .print\:hidden, header:not(.print\:flex) {
+    display: none !important;
+  }
+
+  /* Force layout sequentially without page breaks inside cards */
+  .print\:break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  /* Remove box shadows for crisp PDF export */
+  * {
+    box-shadow: none !important;
+  }
+  
+  /* Reset some paddings for print */
+  .p-8 {
+    padding: 1rem !important;
   }
 }
