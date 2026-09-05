@@ -1,12 +1,12 @@
+import { OnboardingProvider } from '@/context/OnboardingContext';
+import OnboardingWizard from '@/components/OnboardingWizard';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-serif">Welcome</h1>
-      <div className="flex gap-2">
-        <span className="badge-mint">Mint Badge</span>
-        <span className="badge-rose">Rose Badge</span>
-        <span className="badge-lavender">Lavender Badge</span>
-      </div>
-    </main>
+    <OnboardingProvider>
+      <main className="min-h-screen bg-cream-100 flex flex-col items-center justify-center p-4">
+        <OnboardingWizard />
+      </main>
+    </OnboardingProvider>
   );
 }
