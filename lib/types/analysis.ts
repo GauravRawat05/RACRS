@@ -107,6 +107,28 @@ export interface ActionPlan {
   generatedAt: string;
 }
 
+export interface AtsBulletOptimization {
+  originalBullet: string;
+  identifiedIssue: 'missing_metrics' | 'weak_verb' | 'too_vague' | 'missing_keywords';
+  xyzRewrites: string[];
+}
+
+export interface AtsEvaluation {
+  overallScore: number;
+  pillars: {
+    keywordCoverage: number;
+    impactDensity: number;
+    actionVerbStrength: number;
+    sectionCompleteness: number;
+  };
+  matchedKeywords: string[];
+  missingCriticalKeywords: string[];
+  weakBullets: AtsBulletOptimization[];
+  strongVerbsUsed: string[];
+  weakVerbsUsed: string[];
+  metricsFound: number;
+}
+
 export interface ComprehensiveAnalysisResult {
   profile: CandidateProfile;
   primaryMatch: CareerMatch;
@@ -114,4 +136,5 @@ export interface ComprehensiveAnalysisResult {
   skillGapAnalysis: SkillGapAnalysis;
   resources: LearningResource[];
   actionPlan: ActionPlan;
+  atsEvaluation?: AtsEvaluation;
 }
